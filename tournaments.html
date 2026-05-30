@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tournaments — SMC Chess Club</title>
+<meta name="description" content="SMC Chess Club tournaments. Free weekly online tournaments and free in person rated tournaments for all levels, ages 5 to 18.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Spline+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span class="mark">♞</span> SMC Chess Club</a>
+    <div class="nav-links" id="links">
+      <a href="index.html" class="">Home</a>
+      <a href="about.html" class="">About</a>
+      <a href="programs.html" class="">Programs</a>
+      <a href="services.html" class="">Services</a>
+      <a href="details.html" class="">Details</a>
+      <a href="faq.html" class="">FAQ</a>
+      <a href="tournaments.html" class="active">Tournaments</a>
+      <a href="https://forms.gle/wypQJZxzodsCnf7c6" target="_blank" rel="noopener" class="nav-cta">Enroll Now</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="banner">
+  <div class="wrap">
+    <div class="crumb"><span>🏆</span> Tournaments</div>
+    <h1>Play, compete, and grow.</h1>
+    <p>We run two kinds of tournaments. Free weekly tournaments online, and free in person events. Pick a tab to see each one.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="schedule reveal">
+      <div class="sched-tabs">
+        <button class="sched-tab active" data-tab="online">💻 Online</button>
+        <button class="sched-tab" data-tab="inperson">📍 In Person</button>
+      </div>
+
+      <!-- ===== ONLINE TAB ===== -->
+      <div class="sched-panel active" data-tab="online">
+        <div class="perks-band">
+          <div class="inner">
+            <div class="perks-head">
+              <div class="tag">Free · Weekends · Online</div>
+              <h2>Weekend Online Tournaments</h2>
+              <p>Most weekends our students play in a free online tournament. It is a relaxed, fun way to practice under real game conditions and track progress. Open to all enrolled students, every level welcome.</p>
+            </div>
+            <div class="perks">
+              <div class="perk">
+                <div class="ico">🗓️</div>
+                <h4>Every Saturday & Sunday</h4>
+                <p>Online tournaments run on weekends. Start times vary each week, so ask your coach for this week's exact time and game link.</p>
+              </div>
+              <div class="perk">
+                <div class="ico">💸</div>
+                <h4>Always Free</h4>
+                <p>There is never a fee to play. Online tournaments are included for every enrolled student.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== IN PERSON TAB ===== -->
+      <div class="sched-panel" data-tab="inperson">
+        <div class="sec-head reveal" style="max-width:46em;margin-bottom:24px">
+          <div class="sec-tag">Free · In Person</div>
+          <h2 style="font-size:clamp(1.6rem,3.4vw,2.2rem)">Upcoming In Person Tournaments</h2>
+          <p>In person tournaments are free to enter. The list below is updated as new events are scheduled.</p>
+        </div>
+
+        <!-- =================================================================== -->
+        <!--  THIS TABLE FILLS ITSELF FROM A GOOGLE SHEET. DO NOT EDIT IT HERE.   -->
+        <!--  To update tournaments, just edit the Google Sheet. New rows in the -->
+        <!--  sheet appear here automatically. The sheet needs these column      -->
+        <!--  headers in row 1: Date | Tournament | Location | Time | Entry       -->
+        <!-- =================================================================== -->
+        <div class="sched-scroll">
+          <table class="stable">
+            <thead>
+              <tr><th>Date</th><th>Tournament</th><th>Location</th><th>Time</th><th>Entry</th></tr>
+            </thead>
+            <tbody id="tournRows">
+              <tr><td colspan="5" style="text-align:center;color:var(--ink-soft);padding:24px">Loading tournaments…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sched-note">All in person tournaments are free to enter. Contact us to confirm a spot for your child.</p>
+        <div class="btn-row" style="margin-top:20px">
+          <a href="https://forms.gle/wypQJZxzodsCnf7c6" target="_blank" rel="noopener" class="btn btn-primary">Register Here ♞</a>
+          <a href="tel:+14089212542" class="btn btn-ghost">Call +1 (408) 921-2542</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+  (function(){
+    document.querySelectorAll('.sched-tab').forEach(function(t){
+      t.addEventListener('click',function(){
+        var tab=t.getAttribute('data-tab');
+        document.querySelectorAll('.sched-tab').forEach(function(x){x.classList.toggle('active',x===t);});
+        document.querySelectorAll('.sched-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-tab')===tab);});
+      });
+    });
+  })();
+  </script>
+
+  <script>
+  (function(){
+    /* ============================================================= */
+    /*  EDIT ONE LINE ONLY: paste your published Google Sheet CSV     */
+    /*  link between the quotes below. Nothing else here needs edits. */
+    /* ============================================================= */
+    var SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVb94mjitwZ6B6iAlaHDiq7KQ4bpasktzaKuGuvHVVf1SRtrUlQgPApfhAgqV8vnHbYcV6oQON5nXu/pub?gid=0&single=true&output=csv";
+    /* ============================================================= */
+
+    /* BACKUP LIST: shown until a Google Sheet is connected above.    */
+    /* You can edit tournaments here too. Format per line:            */
+    /*   ["Date", "Tournament", "Location", "Time", "Entry"],         */
+    var DEFAULT_ROWS = [
+      ["Sat, Jun 13", "In Person Tournament", "Cupertino Library", "12:00 PM", "Free"]
+    ];
+
+    var tbody = document.getElementById('tournRows');
+    if(!tbody) return;
+    function esc(s){var d=document.createElement('div');d.textContent=(s==null?'':s);return d.innerHTML;}
+    function msg(m){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--ink-soft);padding:24px">'+esc(m)+'</td></tr>';}
+    function parseCSV(text){
+      var rows=[],row=[],f='',i=0,q=false,c;
+      while(i<text.length){c=text[i];
+        if(q){ if(c=='"'){ if(text[i+1]=='"'){f+='"';i++;} else q=false; } else f+=c; }
+        else { if(c=='"')q=true; else if(c==',' ){row.push(f);f='';} else if(c=='\n'){row.push(f);rows.push(row);row=[];f='';} else if(c=='\r'){} else f+=c; }
+        i++;
+      }
+      if(f.length||row.length){row.push(f);rows.push(row);}
+      return rows.filter(function(r){return r.some(function(x){return (x||'').trim()!=='';});});
+    }
+    function renderRows(rows){
+      var html='';
+      for(var k=0;k<rows.length;k++){
+        var r=rows[k];
+        function g(ix,fb){return (ix>=0 && r[ix]!=null && (''+r[ix]).trim()!=='')?esc((''+r[ix]).trim()):fb;}
+        html+='<tr><td class="grp">'+g(0,'')+'</td><td>'+g(1,'')+'</td><td>'+g(2,'')+'</td><td class="tm">'+g(3,'')+'</td><td class="lvl">'+g(4,'Free')+'</td></tr>';
+      }
+      if(html) tbody.innerHTML=html; else msg('No tournaments scheduled right now. Check back soon.');
+    }
+
+    /* 1) show the backup list right away */
+    renderRows(DEFAULT_ROWS);
+
+    /* 2) if a sheet is connected, let it take over */
+    if(SHEET_CSV_URL.indexOf('REPLACE_WITH')===0){ return; }
+    fetch(SHEET_CSV_URL).then(function(r){return r.text();}).then(function(text){
+      var rows=parseCSV(text);
+      if(rows.length<2){ return; }
+      var head=rows[0].map(function(h){return (h||'').trim().toLowerCase();});
+      function ci(n){return head.indexOf(n);}
+      var di=ci('date'),ni=ci('tournament'),li=ci('location'),ti=ci('time'),ei=ci('entry');
+      var mapped=[];
+      for(var k=1;k<rows.length;k++){
+        var r=rows[k];
+        mapped.push([ di>=0?r[di]:'', ni>=0?r[ni]:'', li>=0?r[li]:'', ti>=0?r[ti]:'', ei>=0?r[ei]:'' ]);
+      }
+      renderRows(mapped);
+    }).catch(function(){ /* keep backup list on error */ });
+  })();
+  </script>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand"><span class="mark">♞</span> SMC Chess Club</a>
+        <p>Igniting passion, one move at a time. Expert chess coaching for ages 5 to 18, founded in 2020.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="services.html">Services</a>
+        <a href="details.html">Details</a>
+        <a href="faq.html">FAQ</a>
+        <a href="tournaments.html">Tournaments</a>
+      </div>
+      <div class="foot-col">
+        <h5>Get in Touch</h5>
+        <a href="tel:+14089212542">+1 (408) 921-2542</a>
+        <a href="https://forms.gle/wypQJZxzodsCnf7c6" target="_blank" rel="noopener">Enroll Now</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; <span id="yr"></span> SMC Chess Club. All rights reserved.</span>
+      <span>I never lose. I win or I learn.</span>
+    </div>
+  </div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
