@@ -94,8 +94,8 @@
           </table>
         </div>
         <p class="sched-note">All in person tournaments are free to enter. Contact us to confirm a spot for your child.</p>
-        <div class="btn-row" style="margin-top:20px">
-          <a href="https://forms.gle/wypQJZxzodsCnf7c6" target="_blank" rel="noopener" class="btn btn-primary">Register Here ♞</a>
+        <p style="margin-top:20px;font-weight:600;color:var(--ink)">♞ Always free for SMC Chess students.</p>
+        <div class="btn-row" style="margin-top:12px">
           <a href="tel:+14089212542" class="btn btn-ghost">Call +1 (408) 921-2542</a>
         </div>
       </div>
@@ -152,7 +152,7 @@
         function link(ix){
           var u=(ix>=0 && r[ix]!=null)?(''+r[ix]).trim():'';
           if(!u) return '<span style="color:var(--ink-soft)">—</span>';
-          return '<a href="'+esc(u)+'" target="_blank" rel="noopener" class="btn btn-primary" style="padding:6px 14px;font-size:.9rem">Register</a>';
+          return '<a href="'+esc(u)+'" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:underline">Register →</a>';
         }
         html+='<tr><td class="grp">'+g(0,'')+'</td><td>'+link(1)+'</td><td>'+g(2,'')+'</td><td class="tm">'+g(3,'')+'</td></tr>';
       }
