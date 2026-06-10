@@ -41,22 +41,70 @@
    <div class="sec-head reveal" style="max-width:46em">
       <div class="sec-tag">Class Levels</div>
       <h2>Classes grouped by playing strength.</h2>
-      <p>We run weekly classes for every level, from brand new players to tournament competitors. Tell us your child's level and we will place them in the right group. Not sure where they fit? Call us and we will help.</p>
+      <p>We run weekly classes for every level, from brand new players to tournament competitors. Pick a level to see what your child will work on. Not sure where they fit? Call us and we will help.</p>
     </div>
     <div class="schedule reveal">
-      <div class="sched-scroll">
-        <table class="stable">
-          <thead><tr><th>Level</th><th>Who it is for</th></tr></thead>
-          <tbody>
-            <tr><td>Beginner</td><td>New to chess or still learning how the pieces move.</td></tr>
-            <tr><td>Intermediate</td><td>Knows the rules and is building tactics and openings.</td></tr>
-            <tr><td>Advanced</td><td>Competing in rated events and refining strategy.</td></tr>
-          </tbody>
-        </table>
+      <div class="sched-tabs">
+        <button class="sched-tab active" data-level="beg">Beginner</button>
+        <button class="sched-tab" data-level="int">Intermediate</button>
+        <button class="sched-tab" data-level="adv">Advanced</button>
+      </div>
+      <div class="sched-panel active" data-level="beg">
+        <p>Brand new players start here. We make the board feel friendly fast and build real confidence game by game.</p>
+        <div class="sched-scroll">
+          <table class="stable">
+            <thead><tr><th>Focus</th><th>What it builds</th></tr></thead>
+            <tbody>
+              <tr><td>How the pieces move</td><td>A solid foundation with no gaps.</td></tr>
+              <tr><td>Basic checkmates</td><td>The confidence to finish a game.</td></tr>
+              <tr><td>Simple tactics</td><td>Spotting forks, pins, and easy wins.</td></tr>
+              <tr><td>Good habits</td><td>Thinking before moving, every time.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="sched-panel" data-level="int">
+        <p>For players who know the rules and want to win more games. We sharpen pattern recognition and real game skill.</p>
+        <div class="sched-scroll">
+          <table class="stable">
+            <thead><tr><th>Focus</th><th>What it builds</th></tr></thead>
+            <tbody>
+              <tr><td>Opening principles</td><td>Strong starts without memorizing lines.</td></tr>
+              <tr><td>Tactical patterns</td><td>Seeing combinations two moves ahead.</td></tr>
+              <tr><td>Endgame basics</td><td>Converting a lead into a win.</td></tr>
+              <tr><td>Game review</td><td>Learning from every game played.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="sched-panel" data-level="adv">
+        <p>For competitive players sharpening for rated play. We build the depth that wins tournaments.</p>
+        <div class="sched-scroll">
+          <table class="stable">
+            <thead><tr><th>Focus</th><th>What it builds</th></tr></thead>
+            <tbody>
+              <tr><td>Deep opening prep</td><td>A repertoire your child owns.</td></tr>
+              <tr><td>Complex tactics</td><td>Calculating sharp positions accurately.</td></tr>
+              <tr><td>Endgame technique</td><td>Precision when it matters most.</td></tr>
+              <tr><td>Tournament strategy</td><td>Managing clock, nerves, and pressure.</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <p class="sched-note">Classes run weekly and are held live online over Zoom. Reach out to confirm openings and to get your child placed in the right group and time.</p>
     </div>
   </div>
+<script>
+    (function(){
+      document.querySelectorAll('.sched-tab').forEach(function(t){
+        t.addEventListener('click',function(){
+          var level=t.getAttribute('data-level');
+          document.querySelectorAll('.sched-tab').forEach(function(x){x.classList.toggle('active',x===t);});
+          document.querySelectorAll('.sched-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-level')===level);});
+        });
+      });
+    })();
+    </script> 
 </section>
 
 <section class="alt" style="background:var(--sky)">
