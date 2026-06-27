@@ -152,7 +152,7 @@
         function g(ix,fb){return (ix>=0 && r[ix]!=null && (''+r[ix]).trim()!=='')?esc((''+r[ix]).trim()):fb;}
         function link(ix){
           var u=(ix>=0 && r[ix]!=null)?(''+r[ix]).trim():'';
-          if(!u) return '<span style="color:var(--ink-soft)">—</span>';
+         if(!u) return '<span style="color:var(--ink-soft)">Registration will open soon</span>';
           return '<a href="'+esc(u)+'" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:underline">Register →</a>';
         }
         html+='<tr><td class="grp">'+g(0,'')+'</td><td>'+link(1)+'</td><td>'+g(2,'')+'</td><td class="tm">'+g(3,'')+'</td></tr>';
