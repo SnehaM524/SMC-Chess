@@ -87,10 +87,10 @@
         <div class="sched-scroll">
           <table class="stable">
             <thead>
-              <tr><th>Date</th><th>Registration</th><th>Location</th><th>Time</th></tr>
+              <tr><th>Date</th><th>Registration</th><th>Location</th><th>Rated</th><th>Time</th></tr>
             </thead>
             <tbody id="tournRows">
-              <tr><td colspan="4" style="text-align:center;color:var(--ink-soft);padding:24px">Loading tournaments…</td></tr>
+              <tr><td colspan="5" style="text-align:center;color:var(--ink-soft);padding:24px">Loading tournaments…</td></tr>
             </tbody>
           </table>
         </div>
@@ -128,7 +128,7 @@
     /* You can edit tournaments here too. Format per line:            */
     /*   ["Date", "Tournament", "Location", "Time", "Entry"],         */
     var DEFAULT_ROWS = [
-      ["Sat, Jun 13", "https://forms.gle/wypQJZxzodsCnf7c6", "Cupertino Library", "12:00 PM"]
+      ["Sat, Jun 13", "https://forms.gle/wypQJZxzodsCnf7c6", "Cupertino Library", "Yes", "12:00 PM"]
     ];
 
     var tbody = document.getElementById('tournRows');
@@ -155,7 +155,7 @@
          if(!u) return '<span style="color:var(--ink-soft)">Registration will open soon</span>';
           return '<a href="'+esc(u)+'" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:underline">Register →</a>';
         }
-        html+='<tr><td class="grp">'+g(0,'')+'</td><td>'+link(1)+'</td><td>'+g(2,'')+'</td><td class="tm">'+g(3,'')+'</td></tr>';
+        html+='<tr><td class="grp">'+g(0,'')+'</td><td>'+link(1)+'</td><td>'+g(2,'')+'</td><td>'+g(3,'')+'</td><td class="tm">'+g(4,'')+'</td></tr>';
       }
       if(html) tbody.innerHTML=html; else msg('No tournaments scheduled right now. Check back soon.');
     }
@@ -170,10 +170,10 @@
       if(rows.length<2){ return; }
       var head=rows[0].map(function(h){return (h||'').trim().toLowerCase();});
       function ci(n){return head.indexOf(n);}
-var di=ci('date'),ni=ci('registration link'),li=ci('location'),ti=ci('time');      var mapped=[];
+var di=ci('date'),ni=ci('registration link'),li=ci('location'),ri=ci('rated'),ti=ci('time');      var mapped=[];
       for(var k=1;k<rows.length;k++){
         var r=rows[k];
-        mapped.push([ di>=0?r[di]:'', ni>=0?r[ni]:'', li>=0?r[li]:'', ti>=0?r[ti]:'' ]);
+        mapped.push([ di>=0?r[di]:'', ni>=0?r[ni]:'', li>=0?r[li]:'', ri>=0?r[ri]:'', ti>=0?r[ti]:'' ]);
       }
       renderRows(mapped);
     }).catch(function(){ /* keep backup list on error */ });
